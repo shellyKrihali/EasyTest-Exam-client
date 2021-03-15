@@ -32,7 +32,7 @@ export class AccountService {
     }
 
     public getExamsDetiels(): Promise<any> {
-        let headers = new HttpHeaders();
+        let headers = new HttpHeaders();//getvalidexam
         headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
         const options = { headers: headers };
 

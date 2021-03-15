@@ -80,3 +80,19 @@ img-n {
       display: none;
     }
   }
+  .users-img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+
+  }
+  ul li {
+    padding-top: 8px;
+  }
+  .user{
+    padding-top: 15px;
+    padding-right: 10px;
+  }
+  p{
+      font-size: medium;
+  }
