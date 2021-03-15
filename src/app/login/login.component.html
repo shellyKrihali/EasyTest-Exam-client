@@ -1,0 +1,19 @@
+<form (ngSubmit)="onSubmitLogIn()">
+    <div id="login-box">
+        <div class="left">
+            <h1>Log In</h1>
+
+            <input type="text" placeholder="Enter Email" [(ngModel)]="email" name="email" required>
+
+            <input type="password" placeholder="Enter Password" [(ngModel)]="password" name="password" required>
+
+            <button type="submit" class="social-signin">Log In</button>
+
+        </div>
+
+        <div class="right social">
+            <span class="loginwith">EasyTest<br />Exams</span>
+
+        </div>
+    </div>
+</form>

@@ -1,0 +1,82 @@
+img-n {
+    display: block;
+    max-width:100px;
+    max-height:100px;
+    width: auto;
+    height: auto;
+}
+#navbarSupportedContent-555{
+  position: relative;
+  /* width: 800px;
+  height: 200px;
+  left: 50%;
+  top: -5;
+  margin-left: -300px;  */
+}
+#navbar .navbar-form {
+    overflow: hidden;
+  }
+  #navbar .form-group,
+  #navbar .input-group {
+    width: 150%;
+  }
+  #navbar .input-group-addon {
+    width: 80px;
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  a {
+    text-decoration: none;
+  }
+  
+  .suggestions {
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    display: block;
+  }
+  
+  #index-sug-box {
+    width: 586px;
+  }
+  
+  .query-suggestions:hover {
+    background: #E3E3E3;
+    
+  }
+  .suggestions{
+    background: #853b3b;
+    position:relative;
+    
+    color:red;
+
+  }
+  .suggestion-box {
+    width: 634px;
+    max-width: 90%;
+    border: 1px solid rgba(117, 102, 206, 0.3);
+    background-color: white;
+    display: block;
+    height: 50px;
+    margin-left: -1px;
+    position: relative;
+  }
+  
+  @media screen and (max-width: 767px) {
+    .suggestion-box {
+      width: 95.2vw;
+    }
+  }
+  
+  @media screen and (max-width: 436px) {
+    .suggestion-box {
+      display: none;
+    }
+  }

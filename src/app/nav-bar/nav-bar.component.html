@@ -1,0 +1,68 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+        <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+      </button>
+      <a routerLink="/">
+        <div class="navbar-logo">
+          <img
+            src="https://lh5.googleusercontent.com/BhhgMLODm65M2l8bSyf9Dv4h2P5PdbCmunbiAZnAGHlZvvRDb182CDDoU5UOtueeH2GH8j3xtqL2eqqJl3yjAkf7GsJuekOY_7XDhElGAB6fPDDF_vEvBcqHNHEP6Qf8NERuUBO68VU"
+            width="65" height="65" alt="logo">
+        </div>
+      </a>
+    </div>
+    <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true"
+      *ngIf="!getLoggedUser();else elseBlock">
+      <!-- <ul class="nav navbar-nav navbar-center">
+
+        <li><a routerLink="/">Home</a></li>
+
+      </ul> -->
+      <!-- <ul class="nav navbar-nav navbar-right">
+
+        <ul class="nav navbar-nav navbar-right">
+          <li routerLinkActive="active"><a routerLink="/sign-up">Sign-Up</a></li>
+          <li routerLinkActive="active"><a routerLink="/log-in">Log-In</a></li>
+        </ul>
+
+      </ul> -->
+    </div>
+    <ng-template #elseBlock>
+      <div>
+        <ul class="nav navbar-nav navbar-center">
+          <li><a routerLink="/home">Home</a></li>
+
+          <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="courses" id="navbarDropdownMenuLink">
+              Courses
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <div>
+                <a class="nav-link dropdown-item" routerLink="courses/followed-courses">My Courses</a>
+              </div>
+              <div>
+                <a class="dropdown-item" routerLink="courses/search">Follow Courses</a>
+              </div>
+            </div>
+          </li> -->
+
+          <!--           
+          <li><a routerLink="/upload-file">Upload File</a></li>
+          <li><a routerLink="/directory">My Exam Directories</a></li> -->
+
+
+        </ul>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="user">
+          <p>HI, {{user.email}}</p>
+        </li>
+        <li class="user"><img class="users-img" [src]="user.imageUrl" /> </li>
+        <!-- <li><a routerLink='/updeate-users-details'>Settings</a></li> -->
+        <li><a (click)="logOut()" href="#">Log Out</a></li>
+      </ul>
+    </ng-template>
+
+  </div>
+</nav>
