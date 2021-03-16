@@ -1,0 +1,14 @@
+.file-header{
+    padding-right: 15px;
+    padding-left: 15px;
+    height: 15px;
+    
+}
+.iframe{
+    height: 600px;
+    
+}
+button{
+  border-style: none;
+  background-color: transparent;
+}

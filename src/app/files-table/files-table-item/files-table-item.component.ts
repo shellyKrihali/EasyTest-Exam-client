@@ -1,9 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { Card } from 'src/app/models/card';
 import { Summary } from 'src/app/models/summary';
 import { AccountService } from 'src/app/services/account.service';
+import { Subscription } from 'rxjs';
+
 import * as AOS from 'aos';
+import { FileService } from 'src/app/services/file.service';
 
 @Component({
   selector: 'files-table-item',
@@ -17,13 +20,19 @@ export class FilesTableItemComponent implements OnInit {
   currentRate: number;
   url: string;
   icons: string[] = [];
-
-  constructor(private router: Router,
-    private service: AccountService) { }
+  private fileId: string;
+  private subscription: Subscription;
+  constructor(private router: Router,private route: ActivatedRoute,
+    private service: AccountService,private fileService:FileService) { 
+      //this.subscription = route.parent.params.subscribe(
+       // (param: any) => this.fileId = param['id']
+      //);
+    }
 
   ngOnInit(): void {
-    this.url = this.file.pathUrl;
-
+    //this.url = this.file.pathUrl;
+    this.url=this.file.pathUrl;
+    
     AOS.init({
       offset: 0,
       delay: 0, 
@@ -32,6 +41,7 @@ export class FilesTableItemComponent implements OnInit {
       once: false,  
       mirror: true, 
 
+
     });
 
     this.card = new Card(
@@ -39,14 +49,21 @@ export class FilesTableItemComponent implements OnInit {
       , this.file.title,
       this.file.title
     );
-  }
-  showFile() {
-    // this.fileService.currentFileDisplied = this.summary;
-    // this.router.navigate(['/file', this.summary._id]);
-  }
-  addToDirectory() {
-    //this.directoryService.addFileToExamDirectory()
+   /* console.log(this.fileId);
+    this.fileService.getFilesFullDetailes(this.fileId).then(json => {
+      console.log("re");
+      console.log(json);
+      this.file = json.summary;
 
+
+      this.url = this.file.pathUrl;
+    });*/
   }
+  
+  showFile() {
+    this.fileService.currentFileDisplied = this.file;
+    this.router.navigate(['/file',this.file._id]);
+  }
+  
 
 }

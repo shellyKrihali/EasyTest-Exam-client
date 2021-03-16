@@ -9,6 +9,8 @@ import { ServersComponent } from './servers/servers.component';*/
 //import { ExamListComponent } from './exams/exam-list/exam-list.component'
 //import { ExamItemComponent } from './exams/exam-list/exam-item/exam-item.component'
 import { ReactiveFormsModule } from '@angular/forms';
+//import { CommonModule } from "@angular/common";
+
 
 //import { MytestsComponent } from './mytests/mytests.component';
 //import { TestListComponent } from './mytests/test-list/test-list.component';
@@ -30,6 +32,8 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { FilesComponent } from './files/files.component';
+import { FileDisplayComponent } from './files/file-display/file-display.component';
 //import { LogInComponent } from './log-in/log-in.component';
 //import { MainLogoComponent } from './main-logo/main-logo.component';
 //import { SearchFilesComponent } from './search-files/search-files.component';
@@ -44,7 +48,9 @@ import { HomeComponent } from './home/home.component';
     NavBarComponent,
     LoginComponent,
     SafePipe,
-    FilePipePipe
+    FilePipePipe,
+    FilesComponent,
+    FileDisplayComponent
     //ServerComponent,
     //ServersComponent,
     //HeaderComponent,
@@ -67,6 +73,7 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    //CommonModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,

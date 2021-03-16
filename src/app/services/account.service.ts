@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ExamDirectory } from '../models/examDirectory';
 import { Summary } from '../models/summary';
 import { Subject } from 'rxjs';
+import { Console } from 'console';
 
 
 @Injectable({ providedIn: 'root' })
@@ -17,6 +18,8 @@ export class AccountService {
     public directory: ExamDirectory;
     //public userFilesFromDb:UsersFile[] = [];
     public summaries: Summary[] = [];
+    public courseName: String;
+    public duration: number;
     summariesSub: Subject<Summary[]> = new Subject<Summary[]>();
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -52,9 +55,12 @@ export class AccountService {
                 this.getExamsDetiels().then(exam => {
                     console.log(exam);
                     const summaries = exam.directory.summaries; 
+                    console.log(exam.course.name);
+                    this.courseName=exam.course.name;
                     this.directory = exam.directory;
                     //this.summariesSub = res.;//sub-non
                     this.summariesSub.next(summaries);
+                    //this.duration=exam.course.exams.duration;
                 }).catch(err => {
 
                 })
