@@ -19,7 +19,19 @@ export class NavBarComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
 
 
-  constructor(private service: AccountService, private router: Router, private cookieService: CookieService) { }
+  constructor(private service: AccountService, private router: Router, private cookieService: CookieService) {
+    ////once Bar adds duration to server
+    /*var currentDate=  new Date();
+  
+    var finishExamA= new Date(this.service.examA.getTime()+(this.service.duration * 60 * 1000));
+    var finishExamB= new Date(this.service.examB.getTime()+(this.service.duration * 60 * 1000));
+
+    if(currentDate> finishExamA || currentDate> finishExamB){
+      this.router.navigate(['/logout']);
+      //also add pop up window that the exam is over
+    }
+    */
+   }
 
   ngOnInit(): void {
   }
@@ -41,6 +53,7 @@ export class NavBarComponent implements OnInit {
     this.cookieService.delete("user");
     this.cookieService.delete("token");
     //TODO add logout page, with page logout confirmation
-    this.router.navigate(['/login']);
+    //this.router.navigate(['/login']);
+    this.router.navigate(['/logout']);
   }
 }

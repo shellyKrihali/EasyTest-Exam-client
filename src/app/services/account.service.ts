@@ -20,6 +20,8 @@ export class AccountService {
     public summaries: Summary[] = [];
     public courseName: String;
     public duration: number;
+    public examA: Date;
+    public examB: Date;
     summariesSub: Subject<Summary[]> = new Subject<Summary[]>();
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -54,13 +56,16 @@ export class AccountService {
                 this.cookieServise.set("token", json.token);
                 this.getExamsDetiels().then(exam => {
                     console.log(exam);
+                    const examA=exam.course.exams.exam;
+                    const examB=exam.course.exams.remake;
+
                     const summaries = exam.directory.summaries; 
                     console.log(exam.course.name);
                     this.courseName=exam.course.name;
                     this.directory = exam.directory;
                     //this.summariesSub = res.;//sub-non
                     this.summariesSub.next(summaries);
-                    //this.duration=exam.course.exams.duration;
+                    //this.duration=exam.course.exams.duration;//once Bar adds it to server
                 }).catch(err => {
 
                 })

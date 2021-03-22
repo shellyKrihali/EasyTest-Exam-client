@@ -1,0 +1,10 @@
+#logout-box {
+    position: relative;
+    margin:  auto;
+    margin-top: 5%;
+    width: 650px;
+    height: 500px;
+    background: #FFF;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
