@@ -7,6 +7,7 @@ import { FilesTableComponent } from './files-table/files-table.component';
 import { FilesComponent } from './files/files.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
 import { LogoutComponent } from './logout/logout.component';
+import { TimerComponent } from './timer/timer.component';
 //import { ExamDetailComponent } from './exams/exam-detail/exam-detail.component';
 //import { ExamListComponent } from './exams/exam-list/exam-list.component';
 //import { LogInComponent } from './log-in/log-in.component'
@@ -30,6 +31,8 @@ const appRoutes: Routes=[
     { path: 'login', component: LoginComponent },
 
     {path: 'logout',component: LogoutComponent},
+
+    //{path: 'timer', component: TimerComponent},
 
     { path: '**', redirectTo: '' }
 ];

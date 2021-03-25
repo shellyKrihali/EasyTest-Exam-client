@@ -15,10 +15,39 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 70px;
   }
-  
+  .card-wrapper {
+    max-width: 30%;
+    min-width: 20%;
+    height: 500px;
+    align-content: center;
+    text-align: center;
+    
+    
+}
+#wrap {border: 1px solid rgb(255, 255, 255);  max-width: 100%;; overflow: hidden; }
+#file-preview{  border: 0px none; margin-left: 0px; height: 700px; margin-top: -80px; width: 110%;  overflow: hidden;}
+#file-preview { zoom: 0.75;  }
   div.container {
     /* text-align: center; */
     padding: 10px 20px;
   }
   
+    .image-container{
+        height: 600px;
+        width: 300px;
+      overflow: hidden;
+    }
+    .file-preview{
+      height: 600px;
+      overflow: hidden;
+   zoom: 3;  }
   
+  .card{
+    margin-left: 50%;
+      max-width: 400px;
+      min-width: 400px;
+      height: 500px;
+  }
+  .item{
+    padding-top: 50px;
+  }

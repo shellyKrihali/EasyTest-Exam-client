@@ -25,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { FilesComponent } from './files/files.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
 import { LogoutComponent } from './logout/logout.component';
+import { TimerComponent } from './timer/timer.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { LogoutComponent } from './logout/logout.component';
     FilePipePipe,
     FilesComponent,
     FileDisplayComponent,
-    LogoutComponent
+    LogoutComponent,
+    TimerComponent
     
   ],
   imports: [
