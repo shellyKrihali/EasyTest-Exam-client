@@ -14,6 +14,9 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { MatDialogModule } from '@angular/material/dialog';
+
+import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 
 
 import { AppComponent } from './app.component';
@@ -26,6 +29,8 @@ import { FilesComponent } from './files/files.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TimerComponent } from './timer/timer.component';
+import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
+import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-over-dialog.component';
 
 
 @NgModule({
@@ -41,7 +46,9 @@ import { TimerComponent } from './timer/timer.component';
     FilesComponent,
     FileDisplayComponent,
     LogoutComponent,
-    TimerComponent
+    TimerComponent,
+    WaitingRoomComponent,
+    ExamIsOverDialogComponent
     
   ],
   imports: [
@@ -59,9 +66,13 @@ import { TimerComponent } from './timer/timer.component';
     IgxIconModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
-  providers: [
+  entryComponents: [
+    ExamIsOverDialogComponent
+  ],
+  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}//check if nessesary
   ],
   bootstrap: [AppComponent]
 })

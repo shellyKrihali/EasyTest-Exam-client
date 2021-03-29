@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 export class LogoutComponent implements OnInit {
   confirmationNumber : String;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    console.log("In logoutcomponent");
+
+   }
 
   ngOnInit(): void {
     //this.confirmationNumber= web confirmation number

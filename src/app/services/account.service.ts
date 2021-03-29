@@ -15,7 +15,6 @@ import { Subject } from 'rxjs';
 export class AccountService {
     user: User;
     public directory: ExamDirectory;
-    //public userFilesFromDb:UsersFile[] = [];
     public summaries: Summary[] = [];
     public courseName: String;
     duration=180;////once Bar adds it to server-delete 180
@@ -55,7 +54,7 @@ export class AccountService {
                 this.cookieServise.set("token", json.token);
                 this.getExamsDetiels().then(exam => {
                     console.log(exam);
-                    this.examA=exam.course.exams.exam;
+                    this.examA=exam.course.exams.exam;//from server+3hours=the current date
                     this.examB=exam.course.exams.remake;
                     console.log(this.examA);
                     const summaries = exam.directory.summaries; 
@@ -66,7 +65,7 @@ export class AccountService {
                     this.summariesSub.next(summaries);
                     //this.duration=exam.course.exams.duration;//once Bar adds it to server
                 }).catch(err => {
-                        console.log("catch exam will start in less than an hour");
+                        //console.log("catch exam will start in less than an hour");
                 })
             }).catch(err => {
 
