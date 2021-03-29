@@ -18,8 +18,8 @@ export class AccountService {
     public summaries: Summary[] = [];
     public courseName: String;
     duration=180;////once Bar adds it to server-delete 180
-    examA= new Date();
-    examB= new Date();
+    public examA= new Date();
+    public examB= new Date();
     summariesSub: Subject<Summary[]> = new Subject<Summary[]>();
     httpOptions = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -71,7 +71,10 @@ export class AccountService {
 
             });
     }
-
+    /*public searchForAFile(keyWord: string,courseId:string) {
+        return this.http.post<any>(`${environment.apiUrl}/summaries/search/key-word`, { keyWord: keyWord,courseId:courseId })
+          .toPromise();
+      }*/
     public logOut() {
         this.cookieServise.delete("user");
         this.cookieServise.delete("token");

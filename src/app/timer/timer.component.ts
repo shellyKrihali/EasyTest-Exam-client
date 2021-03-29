@@ -55,12 +55,11 @@ export class TimerComponent implements OnInit {
         console.log(service.examA+"exam B finale timer");
       }
 
-      this.hoursToDday=0;
+      /*this.hoursToDday=0;
       this.minutesToDday=0;
-      this.secondsToDday=0;
+      this.secondsToDday=0;*/
       if(this.hoursToDday==0 && this.minutesToDday==0 && this.secondsToDday==0){
         this.openDialog();//popup window the exam is over, Good Luck!
-
       }
     }
   add_minutes(dt, minutes){

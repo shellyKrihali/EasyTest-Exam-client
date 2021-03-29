@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Summary } from '../models/summary';
+import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  summaries: Summary[] = [];
+  searchKeyWord: string;//search for summary in here
+  constructor(private service: AccountService) { }
 
   ngOnInit(): void {
   }
+  onSearchSummary(){
 
+  }
 }

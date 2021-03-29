@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
 
@@ -67,7 +68,8 @@ import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-o
     MatFormFieldModule,
     MatInputModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   entryComponents: [
     ExamIsOverDialogComponent

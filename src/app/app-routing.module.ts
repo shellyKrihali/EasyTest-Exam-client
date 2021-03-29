@@ -35,6 +35,8 @@ const appRoutes: Routes=[
 
     {path: 'waiting-room', component: WaitingRoomComponent},
 
+    {path:'home', component:HomeComponent},
+
     { path: '**', redirectTo: '' }
 ];
 @NgModule({
