@@ -12,9 +12,6 @@ export class ExamIsOverDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ExamIsOverDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data ) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
   
   ngOnInit(): void {
   }

@@ -14,11 +14,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class TimerComponent implements OnInit {
 
   private subscription: Subscription;
-  
     public dateNow = new Date();
     public dDay //= new Date('Jan 01 2021 00:00:00');//examDateAenddate or examDateBenddate
     optionA;
     optionB;
+    duration;
     milliSecondsInASecond = 1000;
     hoursInADay = 24;
     minutesInAnHour = 60;
@@ -40,42 +40,49 @@ export class TimerComponent implements OnInit {
     this.minutesToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour) % this.SecondsInAMinute);
     this.hoursToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute) % this.hoursInADay);
     this.daysToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond * this.minutesInAnHour * this.SecondsInAMinute * this.hoursInADay));
+    if(this.hoursToDday==0 && this.minutesToDday==0 && this.secondsToDday==0){
+      this.openDialog();//popup window the exam is over, Good Luck!
+    }
 }
   constructor(    
-     service: AccountService, private router: Router, public dialog: MatDialog,private cookieService: CookieService) { 
-       this.optionA = service.examA;//TODO retrive examA from the service properly+ add 3hours to examA to match the datenow
-       console.log(service.examA+"exam A timer");
-      this.optionB=service.examB;
+    private service: AccountService, private router: Router, public dialog: MatDialog,private cookieService: CookieService) { 
+    }
+  add_minutes(dt, minutes){
+    return new Date(dt.getTime()+minutes*60000);
+  }
+
+  ngOnInit(): void {
+    this.service.getExamsDetiels().then((exam)=>{
+      this.optionA=new Date(exam.course.exams.exam);
+      this.optionB=new Date(exam.course.exams.remake);
+
+      this.duration=exam.course.exams.duration;
+      console.log(this.duration+" duration");
+
+      console.log(this.optionA+" exam A timer");
       if(this.dateNow.getDay==this.optionA.getDay){
-        this.dDay=this.add_minutes(this.optionA, service.duration);
+        if(this.optionA.getTime()>this.dateNow.getTime()){
+          console.log("waitingroom");
+          this.router.navigate(['/waiting-room']);
+        }
+        this.dDay=this.add_minutes(this.optionA, this.duration);
         console.log(this.dDay+"exam A finale timer");
       }
       else{
-        this.dDay=this.add_minutes(this.optionB, 180);
-        console.log(service.examA+"exam B finale timer");
+        if(this.optionB.getTime()>this.dateNow.getTime()){
+          console.log("waitingroom");
+          this.router.navigate(['/waiting-room']);
+        }
+        this.dDay=this.add_minutes(this.optionB, this.duration);
+        console.log(this.service.examA+"exam B finale timer");
+      } 
+      if(this.dDay.getTime()<this.dateNow.getTime()){
+        this.openDialog();
       }
-
-      /*this.hoursToDday=0;
-      this.minutesToDday=0;
-      this.secondsToDday=0;*/
-      if(this.hoursToDday==0 && this.minutesToDday==0 && this.secondsToDday==0){
-        this.openDialog();//popup window the exam is over, Good Luck!
-      }
-    }
-  add_minutes(dt, minutes){
-    //this.parseDate(dt);
-    return new Date(dt.getTime()+minutes*60000);
-  }
- /* // parse a date in yyyy-mm-dd format
- parseDate(input) {
-  var parts = input.match(/(\d+)/g);
-  // new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
-  return new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
-}
-*/
-  ngOnInit(): void {
     this.subscription = interval(1000)
     .subscribe(x => { this.getTimeDifference(); });
+
+     })
   }
   
  openDialog(): void {
@@ -96,7 +103,6 @@ logOut() {
   console.log("Log Out");
   this.cookieService.delete("user");
   this.cookieService.delete("token");
-  //this.router.navigate(['/login']);
   this.router.navigate(['/logout']);
 }
 

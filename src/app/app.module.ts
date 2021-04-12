@@ -14,10 +14,10 @@ import {
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule,MatDialogRef} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
-import {MAT_DIALOG_DEFAULT_OPTIONS} from '@angular/material/dialog';
+import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 import { AppComponent } from './app.component';
@@ -30,9 +30,16 @@ import { FilesComponent } from './files/files.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TimerComponent } from './timer/timer.component';
-import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
+import { WaitingRoomComponent } from './timer/waiting-room/waiting-room.component';
 import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-over-dialog.component';
+import { ExamNotFoundDialogComponent } from './login/exam-not-found-dialog/exam-not-found-dialog.component';
+import { ConfirmationDialogComponent } from './nav-bar/confirm-dialog/confirm-dialog.component'
 
+const dialogMock = {
+  close: (dialogRef: MatDialogRef<ExamNotFoundDialogComponent>) => { 
+    console.log("heloo");
+  }
+  };
 
 @NgModule({
   declarations: [
@@ -49,7 +56,9 @@ import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-o
     LogoutComponent,
     TimerComponent,
     WaitingRoomComponent,
-    ExamIsOverDialogComponent
+    ExamIsOverDialogComponent,
+    ExamNotFoundDialogComponent,
+    ConfirmationDialogComponent
     
   ],
   imports: [
@@ -72,9 +81,14 @@ import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-o
     MatProgressSpinnerModule
   ],
   entryComponents: [
-    ExamIsOverDialogComponent
-  ],
-  providers: [{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}//check if nessesary
+    ExamIsOverDialogComponent,
+//ExamNotFoundDialogComponent,
+ConfirmationDialogComponent  ],
+  providers: [//{provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},//check if nessesary
+    {
+    provide: MatDialogRef,
+    useValue: dialogMock
+  }, { provide: MAT_DIALOG_DATA, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

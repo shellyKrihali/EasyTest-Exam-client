@@ -8,22 +8,14 @@ import { FilesComponent } from './files/files.component';
 import { FileDisplayComponent } from './files/file-display/file-display.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TimerComponent } from './timer/timer.component';
-import { WaitingRoomComponent } from './waiting-room/waiting-room.component';
-//import { ExamDetailComponent } from './exams/exam-detail/exam-detail.component';
-//import { ExamListComponent } from './exams/exam-list/exam-list.component';
-//import { LogInComponent } from './log-in/log-in.component'
-//import { MainLogoComponent } from './main-logo/main-logo.component';
-//import { SearchFilesComponent } from './search-files/search-files.component'
+import { WaitingRoomComponent } from './timer/waiting-room/waiting-room.component';
+import { ExamNotFoundDialogComponent } from './login/exam-not-found-dialog/exam-not-found-dialog.component';
+
 const appRoutes: Routes=[
-    //{ path: '',redirectTo: '/exams', pathMatch: 'full' },
-   // { path: 'exams',component: ExamListComponent },
-    //{ path: "search-page", component: SearchFilesComponent },
-    //{ path: 'exam-detail',component: ExamDetailComponent },
-    //{ path: 'log-in',component: LogInComponent },
-    //{ path: "feed", component: MainLogoComponent },
+   
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     {
-        path: 'file/:id', component: FilesComponent, canActivate: [AuthGuard]
+        path: 'file/:id', component:FilesComponent, canActivate: [AuthGuard]
         , children: [
             { path: "", redirectTo: "display", pathMatch: "full" },
             { path: 'display', component: FileDisplayComponent },
@@ -34,7 +26,7 @@ const appRoutes: Routes=[
     {path: 'logout',component: LogoutComponent},
 
     {path: 'waiting-room', component: WaitingRoomComponent},
-
+    {path: 'exam-not-found', component: ExamNotFoundDialogComponent},
     {path:'home', component:HomeComponent},
 
     { path: '**', redirectTo: '' }

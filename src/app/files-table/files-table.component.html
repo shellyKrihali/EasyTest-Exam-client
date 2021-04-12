@@ -1,6 +1,7 @@
+<div class="courseName">
+  <h1>Summaries for</h1>
+  <span id= "course">{{courseName}}</span>
+</div>
 <div class="grid-container">
-  <!--li class="courseName">  
-    <p>My summaries for {courseName}</p>
-  </li-->
   <files-table-item *ngFor="let file of files" [file]="file"></files-table-item>
 </div>
