@@ -12,11 +12,12 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   files: Summary[] = [];  //searchKeyWord: string;//search for summary in here
   private sub: Subscription;
-
+  public isValid;
   constructor(private service: AccountService,private router: Router) { 
   }
 
   ngOnInit(): void {
+    this.isValid=this.service.isValid;
   //   this.service.getExamsDetiels().then(exam => {
      
   //     this.files =  exam.directory.summaries; 

@@ -22,12 +22,12 @@ export class FileDisplayComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.fileId);
-    this.fileService.getFilesFullDetailes(this.fileId).then(json => {
+    this.fileService.getFilesFullDetailes(this.fileId).catch((err)=>{
+      console.log("file display error");
+    }).then(json => {
       console.log("re");
       console.log(json);
       this.summary = json.summary;
-
-
       this.url = this.summary.pathUrl;
     });
   }

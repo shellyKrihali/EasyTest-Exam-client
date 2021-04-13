@@ -2,13 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from '../services/account.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../models/user'
-import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatDialogConfig} from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
-import { ExamNotFoundDialogComponent } from './exam-not-found-dialog/exam-not-found-dialog.component';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +24,7 @@ export class LoginComponent implements OnInit {
   constructor(
 
     private router: Router,
-    private service: AccountService,
+    public service: AccountService,
     private fb: FormBuilder,
     public dialog: MatDialog,
     private cookieService: CookieService
@@ -47,26 +43,16 @@ const email = this.loginForm.get('email').value;
 const password = this.loginForm.get('password').value;
 
     
-    this.isValid = true;
     this.service.login(email, password)
-    .catch((err: HttpErrorResponse) => {
-      //this.serverErr = err.error.message;
-     // console.log('An error occurred:', err.error);
-     //console.log("there is no exam nearby");
-     //this.router.navigate(['/']);
-     //this.openDialog();
-      //this.serverErr = err.error.message;
-      this.isValid = false;
-      this.router.navigate(['/login']);
-    }).then(() => {
-      if (this.isValid==true)
+    .then(() => {
+      console.log(this.service.isValid);
+      if (this.service.isValid==true)
       this.gotoHome();
+      else
+        this.serverErr = this.service.serverErr;
+      
     });
-  }
-  openDialog(): void {
-
-    this.router.navigate(['/exam-not-found']);
-    
+    this.isValid=this.service.isValid;
   }
   logOut() {
     console.log("Log Out");
@@ -78,5 +64,4 @@ const password = this.loginForm.get('password').value;
     this.router.navigate(['/home']);
   }
 
-  isValidEmailCheack() { return this.isValid }
 }

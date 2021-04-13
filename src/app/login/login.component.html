@@ -12,7 +12,7 @@
         </mat-form-field>
         <button type="submit" [disabled]="!loginForm.valid" mat-button 
           class="mat-raised-button mat-primary social-signin">Login</button>
-        <mat-error *ngIf="!isValid">{{serverErr}}</mat-error>
+        <mat-error *ngIf="!service.isValid">{{serverErr}}</mat-error>
   
       </div>
   

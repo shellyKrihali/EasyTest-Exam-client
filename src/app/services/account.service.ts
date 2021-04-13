@@ -14,6 +14,7 @@ import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AccountService {
     user: User;
+    public serverErr;
     public name: string;
     public directory: ExamDirectory;
     public summaries: Summary[] = [];
@@ -37,12 +38,14 @@ export class AccountService {
     }
 
     public getExamsDetiels(): Promise<any> {
-        let headers = new HttpHeaders();//getvalidexam
+        let headers = new HttpHeaders();
         headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
         const options = { headers: headers };
 
         return this.http.get<any>(`${environment.apiUrl}/users/exam`, options)
-            .toPromise()
+            .toPromise().catch((err)=>{
+                console.log("getExamsDetiels service");
+            })
     }
 
     public login(email: string, password: string): Promise<any> {
@@ -58,6 +61,8 @@ export class AccountService {
                 this.isValid=true;
                 
             }).catch((err: HttpErrorResponse) =>{
+                console.log("login service");
+                this.serverErr=err.error.message;
                 this.isValid=false;
             });
     }

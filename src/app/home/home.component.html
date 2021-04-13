@@ -1,5 +1,5 @@
 
-<app-timer></app-timer>
+<app-timer *ngIf="isValid"></app-timer>
 <!--searchbox-->
 
-<app-files-table></app-files-table>
+<app-files-table *ngIf="isValid"></app-files-table>

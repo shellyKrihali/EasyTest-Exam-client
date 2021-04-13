@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./files-table.component.css']
 })
 export class FilesTableComponent implements OnInit {
-  summariesSub: Subject<Summary[]> = new Subject<Summary[]>();
+  //summariesSub: Subject<Summary[]> = new Subject<Summary[]>();
   public summaries: Summary[] = [];
   files: Summary[] = [];
   element: Element;
@@ -46,7 +46,7 @@ export class FilesTableComponent implements OnInit {
       this.router.navigate(['/exam-not-found']);}
       else{
         console.log("invalid password");
-        this.router.navigate(['/login']);
+        //this.router.navigate(['/login']);
       }
          
        })

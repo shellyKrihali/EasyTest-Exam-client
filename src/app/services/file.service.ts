@@ -21,7 +21,9 @@ export class FileService {
       return this.http.get<any>(`${environment.apiUrl}/summaries/${fileId}`,
       options
     )
-      .toPromise();
+      .toPromise().catch((err)=>{
+        console.log("file service error");
+      });
     //console.log(json);
   }
 }

@@ -20,10 +20,9 @@ export class ExamNotFoundDialogComponent implements OnInit {
   
   ngOnInit(): void {
     this.user = this.service.user;
-
+    this.logOut();
   }
   close() {
-    this.logOut();
     this.router.navigate(['/login']);
 
 }

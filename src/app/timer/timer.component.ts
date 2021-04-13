@@ -45,8 +45,8 @@ export class TimerComponent implements OnInit {
     }
 }
   constructor(    
-    private service: AccountService, private router: Router, public dialog: MatDialog,private cookieService: CookieService) { 
-    }
+    private service: AccountService, private router: Router, public dialog: MatDialog,private cookieService: CookieService)
+     { }
   add_minutes(dt, minutes){
     return new Date(dt.getTime()+minutes*60000);
   }
@@ -82,6 +82,8 @@ export class TimerComponent implements OnInit {
     this.subscription = interval(1000)
     .subscribe(x => { this.getTimeDifference(); });
 
+     }).catch((err)=>{
+       console.log("timer error");
      })
   }
   

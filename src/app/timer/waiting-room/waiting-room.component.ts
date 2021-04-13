@@ -46,7 +46,9 @@ constructor( private service: AccountService, private router: Router) {
    }
 
    ngOnInit(): void {
-    this.service.getExamsDetiels().then((exam)=>{
+    this.service.getExamsDetiels().catch((err)=>{
+      console.log("waitingroom error");
+    }).then((exam)=>{
       this.optionA=new Date(exam.course.exams.exam);
       this.optionB=new Date(exam.course.exams.remake);
       if(this.dateNow.getDay==this.optionA.getDay){
@@ -59,6 +61,7 @@ constructor( private service: AccountService, private router: Router) {
       }
     this.subscription = interval(1000)
     .subscribe(x => { this.getTimeDifference(); });})
+    
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();

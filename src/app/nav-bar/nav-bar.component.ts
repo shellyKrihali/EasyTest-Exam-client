@@ -11,7 +11,7 @@ import { ConfirmationDialogComponent } from './confirm-dialog/confirm-dialog.com
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements AfterViewInit {
+export class NavBarComponent implements OnInit {
 
   dialogRef:MatDialogRef<ConfirmationDialogComponent>
 
@@ -27,9 +27,7 @@ export class NavBarComponent implements AfterViewInit {
   constructor(private service: AccountService, private router: Router, private cookieService: CookieService, public dialog:MatDialog) {
 
    }
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  
 
   ngOnInit(): void {
   }
