@@ -2,6 +2,14 @@
   <h1>Summaries for</h1>
   <span id= "course">{{courseName}}</span>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="search">
+      <label for="search-text">Search By Title</label>
+      <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a summary title">
+    </div>
+  </div>
+</div>
 <div class="grid-container">
-  <files-table-item *ngFor="let file of files" [file]="file"></files-table-item>
+  <files-table-item *ngFor="let file of files | filter:searchText" [file]="file" ></files-table-item>
 </div>

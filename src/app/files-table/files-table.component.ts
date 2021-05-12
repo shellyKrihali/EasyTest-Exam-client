@@ -16,10 +16,13 @@ export class FilesTableComponent implements OnInit {
   //summariesSub: Subject<Summary[]> = new Subject<Summary[]>();
   public summaries: Summary[] = [];
   files: Summary[] = [];
+
   element: Element;
   page: number = 0;
   pages: number[] = [];
   public courseName: String;
+
+  searchText = '';
 
   name: string;
   private sub: Subscription;
@@ -39,6 +42,8 @@ export class FilesTableComponent implements OnInit {
     this.service.getExamsDetiels().then((exam)=>{
       const summaries = exam.directory.summaries; 
       this.files = summaries;
+
+        
       this.courseName=exam.course.name;
     }).catch(err => {
       if(this.service.isValid==true){ 
@@ -55,5 +60,6 @@ export class FilesTableComponent implements OnInit {
     // });
   }
 
+  }
 
-}
+

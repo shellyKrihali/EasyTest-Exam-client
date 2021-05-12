@@ -16,9 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule,MatDialogRef} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
-
 
 import { AppComponent } from './app.component';
 import { FilesTableComponent } from './files-table/files-table.component';
@@ -58,7 +58,7 @@ const dialogMock = {
     WaitingRoomComponent,
     ExamIsOverDialogComponent,
     ExamNotFoundDialogComponent,
-    ConfirmationDialogComponent,
+    ConfirmationDialogComponent
     
   ],
   imports: [
@@ -78,7 +78,8 @@ const dialogMock = {
     MatInputModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    Ng2SearchPipeModule
   ],
   entryComponents: [
     ExamIsOverDialogComponent,

@@ -67,6 +67,10 @@ export class TimerComponent implements OnInit {
         }
         this.dDay=this.add_minutes(this.optionA, this.duration);
         console.log(this.dDay+"exam A finale timer");
+     /*   if(this.dDay.getTime()<this.dateNow.getTime()){
+          console.log("exam not found already over");
+          this.router.navigate(['/exam-not-found']);
+        }*/
       }
       else{
         if(this.optionB.getTime()>this.dateNow.getTime()){
@@ -77,7 +81,7 @@ export class TimerComponent implements OnInit {
         console.log(this.service.examA+"exam B finale timer");
       } 
       if(this.dDay.getTime()<this.dateNow.getTime()){
-        this.openDialog();
+        //this.openDialog();
       }
     this.subscription = interval(1000)
     .subscribe(x => { this.getTimeDifference(); });
