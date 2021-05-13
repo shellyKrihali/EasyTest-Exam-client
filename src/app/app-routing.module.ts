@@ -12,10 +12,12 @@ import { LogoutComponent } from './logout/logout.component';
 import { TimerComponent } from './timer/timer.component';
 import { WaitingRoomComponent } from './timer/waiting-room/waiting-room.component';
 import { ExamNotFoundDialogComponent } from './login/exam-not-found-dialog/exam-not-found-dialog.component';
+import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-over-dialog.component';
 
 const appRoutes: Routes=[
    
-    { path: '', component: HomeComponent, canActivate: [AuthGuard,SafeExamBrowser] },
+    //{ path: '', component: HomeComponent, canActivate: [AuthGuard,SafeExamBrowser] },
+    { path: '', component: LoginComponent},
     {
         path: 'file/:id', component:FilesComponent, canActivate: [AuthGuard,SafeExamBrowser]
         , children: [
@@ -29,6 +31,7 @@ const appRoutes: Routes=[
 
     {path: 'waiting-room', component: WaitingRoomComponent, canActivate: [SafeExamBrowser] },
     {path: 'exam-not-found', component: ExamNotFoundDialogComponent},
+    {path: 'exam-is-over-dialog', component:ExamIsOverDialogComponent},
     {path:'home', component:HomeComponent, canActivate: [SafeExamBrowser] },
     { path: '**', redirectTo: '' }
 ];

@@ -34,6 +34,7 @@ import { WaitingRoomComponent } from './timer/waiting-room/waiting-room.componen
 import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-over-dialog.component';
 import { ExamNotFoundDialogComponent } from './login/exam-not-found-dialog/exam-not-found-dialog.component';
 import { ConfirmationDialogComponent } from './nav-bar/confirm-dialog/confirm-dialog.component';
+import { FooterComponent } from './footer/footer.component';
 
 const dialogMock = {
   close: (dialogRef: MatDialogRef<ExamNotFoundDialogComponent>) => { 
@@ -58,7 +59,8 @@ const dialogMock = {
     WaitingRoomComponent,
     ExamIsOverDialogComponent,
     ExamNotFoundDialogComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    FooterComponent
     
   ],
   imports: [

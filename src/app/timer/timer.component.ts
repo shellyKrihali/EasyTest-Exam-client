@@ -19,6 +19,7 @@ export class TimerComponent implements OnInit {
     optionA;
     optionB;
     duration;
+    isloggedin;
     milliSecondsInASecond = 1000;
     hoursInADay = 24;
     minutesInAnHour = 60;
@@ -55,11 +56,20 @@ export class TimerComponent implements OnInit {
     this.service.getExamsDetiels().then((exam)=>{
       this.optionA=new Date(exam.course.exams.exam);
       this.optionB=new Date(exam.course.exams.remake);
-
       this.duration=exam.course.exams.duration;
       console.log(this.duration+" duration");
-
       console.log(this.optionA+" exam A timer");
+
+      exam.course.students.forEach(element => {
+        console.log(element._id);
+        if(element._id == this.service.user._id)
+            this.isloggedin=element.loggedIn;
+            console.log(this.isloggedin);
+            if(this.isloggedin){
+              this.router.navigate(['/login']);
+              console.log("unauthorized user, user already logged in the system");//add new component "unauthorized user, user already logged in the system"
+            }
+      });
       if(this.dateNow.getDay==this.optionA.getDay){
         if(this.optionA.getTime()>this.dateNow.getTime()){
           console.log("waitingroom");
@@ -92,7 +102,7 @@ export class TimerComponent implements OnInit {
   }
   
  openDialog(): void {
-  const timeout = 5000;
+  const timeout = 10000;
   const dialogRef = this.dialog.open(ExamIsOverDialogComponent, {
     width: '250px',
     data: {}
