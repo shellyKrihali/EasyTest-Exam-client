@@ -3,8 +3,24 @@
     margin:  auto;
     margin-top: 5%;
     width: 650px;
-    height: 500px;
-    background: #FFF;
+    height: 200px;
+    background: rgb(218, 231, 233);
     border-radius: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   }
+ .icon{
+   font-size: 100px;
+   width:250px; 
+    height:250px; 
+    float:left; 
+    line-height: 100px;     
+    text-align: center;
+    vertical-align: bottom;
+ }
+ .title{
+  text-align: left;
+  line-height: 50px;
+  vertical-align: 50px;
+  margin-left: 20px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ }

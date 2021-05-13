@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilePipePipe } from './file-pipe.pipe';
@@ -17,7 +18,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatDialogModule,MatDialogRef} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import {MAT_DIALOG_DEFAULT_OPTIONS,MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
@@ -78,10 +79,12 @@ const dialogMock = {
     IgxIconModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    FontAwesomeModule
   ],
   entryComponents: [
     ExamIsOverDialogComponent,

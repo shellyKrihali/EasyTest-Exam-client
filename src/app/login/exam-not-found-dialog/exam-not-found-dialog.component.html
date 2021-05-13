@@ -1,7 +1,10 @@
-<h1>Hi {{user.name}}</h1>
-<div>
+<div id = "exam-not-found-box">
+<div id="title">
+    <fa-icon [icon]="banIcon" class="icon"></fa-icon>
+    <h1>Hi {{user.name}}</h1>
     <p>Oops.. you don't have an exam today</p>
 </div>
 <div>
     <button class="mat-raised-button"(click)="close()">Close</button>
   </div>
+</div>

@@ -1,0 +1,31 @@
+#exam-not-found-box {
+    position: relative;
+    margin:  auto;
+    margin-top: 5%;
+    width: 650px;
+    height: 150px;
+    background: rgb(218, 231, 233);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  #title{
+    text-align: center;
+    line-height: 50px;
+    vertical-align: 10px;
+    margin-left: 20px;
+    font-size: 23px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  .mat-raised-button{
+      text-align: right;
+      float: right;
+      margin-right: 30px;
+  }
+  .icon{
+    font-size: 50px;
+    color: red;
+     float:left; 
+     line-height: 100px;     
+     text-align: center;
+     vertical-align: bottom;
+  }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { faHandshake } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-logout',
@@ -8,14 +9,13 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-  confirmationNumber : String;
+  handIcon = faHandshake;
 
   constructor(private router: Router,private cookieService: CookieService) {
 
    }
 
   ngOnInit(): void {
-    //this.confirmationNumber= web confirmation number
     console.log("In logout component");
     this.cookieService.delete("user");
     this.cookieService.delete("token");
