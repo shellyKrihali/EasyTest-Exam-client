@@ -71,6 +71,15 @@ export class AccountService {
           .toPromise();
       }*/
     public logOut() {
+  
+        /*        
+        let headers = new HttpHeaders();
+        headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+        const options = { headers: headers };
+
+        return this.http.post<any>(`${environment.apiUrl}/users/logout{userId}',options);
+        */
+    
         this.cookieServise.delete("user");
         this.cookieServise.delete("token");
     }
