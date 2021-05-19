@@ -14,6 +14,8 @@ import { Subject } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class AccountService {
     user: User;
+    public email:string;
+    public password: string;
     public serverErr;
     public name: string;
     public directory: ExamDirectory;
@@ -49,6 +51,8 @@ export class AccountService {
     }
 
     public login(email: string, password: string): Promise<any> {
+        this.email=email;
+        this.password=password;
         return this.http.post<any>(`${environment.apiUrl}/users/login`, { email: email, password: password })
             .toPromise()
             .then(json => {
@@ -66,22 +70,26 @@ export class AccountService {
                 this.isValid=false;
             });
     }
-    /*public searchForAFile(keyWord: string,courseId:string) {
-        return this.http.post<any>(`${environment.apiUrl}/summaries/search/key-word`, { keyWord: keyWord,courseId:courseId })
-          .toPromise();
-      }*/
-    public logOut() {
+ 
+      public loginWithCourse(courseAppId){
+        return this.http.post<any>(`${environment.apiUrl}/users/login`, { email: this.email, password: this.password, courseAppId: courseAppId })
+        .toPromise().catch((err) =>{
+            console.log("already logged in");
+        });
+        
+      }
+    public logOut(courseAppId) {
   
-        /*        
+                
         let headers = new HttpHeaders();
         headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
         const options = { headers: headers };
 
-        return this.http.post<any>(`${environment.apiUrl}/users/logout{userId}',options);
-        */
-    
         this.cookieServise.delete("user");
         this.cookieServise.delete("token");
+        return this.http.post<any>(`${environment.apiUrl}/users/logout`, {courseAppId: courseAppId} , options).toPromise();
+        
+    
     }
 
 

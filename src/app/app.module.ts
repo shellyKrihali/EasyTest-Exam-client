@@ -36,6 +36,7 @@ import { ExamIsOverDialogComponent } from './timer/exam-is-over-dialog/exam-is-o
 import { ExamNotFoundDialogComponent } from './login/exam-not-found-dialog/exam-not-found-dialog.component';
 import { ConfirmationDialogComponent } from './nav-bar/confirm-dialog/confirm-dialog.component';
 import { FooterComponent } from './footer/footer.component';
+import { AlreadyLoggedUserDialogComponent } from './timer/already-logged-user-dialog/already-logged-user-dialog.component';
 
 const dialogMock = {
   close: (dialogRef: MatDialogRef<ExamNotFoundDialogComponent>) => { 
@@ -61,7 +62,8 @@ const dialogMock = {
     ExamIsOverDialogComponent,
     ExamNotFoundDialogComponent,
     ConfirmationDialogComponent,
-    FooterComponent
+    FooterComponent,
+    AlreadyLoggedUserDialogComponent
     
   ],
   imports: [

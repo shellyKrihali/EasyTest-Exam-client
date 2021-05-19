@@ -1,4 +1,4 @@
-import { Component,Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { faHourglassEnd } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,8 +11,7 @@ export class ExamIsOverDialogComponent implements OnInit {
   hourglassEndIcon = faHourglassEnd;
 
   constructor(
-    public dialogRef: MatDialogRef<ExamIsOverDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data ) {}
+    public dialogRef: MatDialogRef<ExamIsOverDialogComponent> ) {}
 
   
   ngOnInit(): void {

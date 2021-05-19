@@ -52,12 +52,13 @@ const password = this.loginForm.get('password').value;
         this.serverErr = this.service.serverErr;
       
     });
+    
     this.isValid=this.service.isValid;
   }
   logOut() {
     console.log("Log Out");
-    this.cookieService.delete("user");
-    this.cookieService.delete("token");
+    /*this.cookieService.delete("user");
+    this.cookieService.delete("token");*/
     this.router.navigate(['/logout']);
   }
   gotoHome() {

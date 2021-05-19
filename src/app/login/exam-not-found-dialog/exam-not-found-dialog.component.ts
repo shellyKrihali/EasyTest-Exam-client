@@ -29,8 +29,8 @@ export class ExamNotFoundDialogComponent implements OnInit {
 
 }
 public logOut() {
-  this.cookieServise.delete("user");
-  this.cookieServise.delete("token");
+  /*this.cookieServise.delete("user");
+  this.cookieServise.delete("token");*/
 }
 
 

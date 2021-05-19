@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ExamIsOverDialogComponent } from './exam-is-over-dialog/exam-is-over-dialog.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { CookieService } from 'ngx-cookie-service';
+import { AlreadyLoggedUserDialogComponent } from './already-logged-user-dialog/already-logged-user-dialog.component';
 
 @Component({
   selector: 'app-timer',
@@ -12,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
+  dialogRef:MatDialogRef<AlreadyLoggedUserDialogComponent>
 
   private subscription: Subscription;
     public dateNow = new Date();
@@ -54,18 +56,23 @@ export class TimerComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.getExamsDetiels().then((exam)=>{
+
       this.optionA=new Date(exam.course.exams.exam);
       this.optionB=new Date(exam.course.exams.remake);
       this.duration=exam.course.exams.duration;
+
       console.log(this.duration+" duration");
       console.log(this.optionA+" exam A timer");
 
       exam.course.students.forEach(element => {
         console.log(element._id);
+
         if(element._id == this.service.user._id)
             this.isloggedin=element.loggedIn;
-            console.log(this.isloggedin);
-            if(this.isloggedin){
+            console.log(element.loggedIn);
+            this.service.loginWithCourse(exam.course._id);
+           if(element.loggedIn){
+             this.openUserAlreadyLoggedInDialog();
               this.router.navigate(['/login']);
               console.log("unauthorized user, user already logged in the system");//add new component "unauthorized user, user already logged in the system"
             }
@@ -117,10 +124,19 @@ export class TimerComponent implements OnInit {
 }
 logOut() {
   console.log("Log Out");
-  this.cookieService.delete("user");
-  this.cookieService.delete("token");
+  /*this.cookieService.delete("user");
+  this.cookieService.delete("token");*/
   this.router.navigate(['/logout']);
 }
-
+openUserAlreadyLoggedInDialog(){
+  this.dialogRef=this.dialog.open(AlreadyLoggedUserDialogComponent, {
+    disableClose:false
+  });
+  this.dialogRef.afterClosed().subscribe(result=> {
+    if(result)
+      this.logOut();
+    this.dialogRef=null;
+  })
+}
 
 }
