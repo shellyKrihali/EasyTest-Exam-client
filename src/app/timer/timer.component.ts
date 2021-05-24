@@ -27,6 +27,8 @@ export class TimerComponent implements OnInit {
     minutesInAnHour = 60;
     SecondsInAMinute  = 60;
 
+    public wasInWaitingRoom;
+
     public timeDifference;
     public secondsToDday;
     public minutesToDday;
@@ -70,18 +72,26 @@ export class TimerComponent implements OnInit {
         if(element._id == this.service.user._id)
             this.isloggedin=element.loggedIn;
             console.log(element.loggedIn);
-            this.service.loginWithCourse(exam.course._id);
-           if(element.loggedIn){
-             this.openUserAlreadyLoggedInDialog();
-              this.router.navigate(['/login']);
-              console.log("unauthorized user, user already logged in the system");//add new component "unauthorized user, user already logged in the system"
+            if(this.wasInWaitingRoom==false ||this.wasInWaitingRoom==null){
+              console.log("inside");
+              this.service.loginWithCourse(exam.course._id);
+              if(element.loggedIn){
+                this.openUserAlreadyLoggedInDialog();
+                 this.router.navigate(['/login']);
+                 console.log("unauthorized user, user already logged in the system");//add new component "unauthorized user, user already logged in the system"
+               }
             }
+             
       });
       if(this.dateNow.getDay==this.optionA.getDay){
         if(this.optionA.getTime()>this.dateNow.getTime()){
           console.log("waitingroom");
+          this.wasInWaitingRoom=true;
           this.router.navigate(['/waiting-room']);
+        }else{
+          this.wasInWaitingRoom=false;
         }
+
         this.dDay=this.add_minutes(this.optionA, this.duration);
         console.log(this.dDay+"exam A finale timer");
         if(this.dDay.getTime()<this.dateNow.getTime()){
@@ -92,8 +102,12 @@ export class TimerComponent implements OnInit {
       else{
         if(this.optionB.getTime()>this.dateNow.getTime()){
           console.log("waitingroom");
+          this.wasInWaitingRoom=true;
           this.router.navigate(['/waiting-room']);
+        }else{
+          this.wasInWaitingRoom=false;
         }
+
         this.dDay=this.add_minutes(this.optionB, this.duration);
         console.log(this.service.examA+"exam B finale timer");
       } 

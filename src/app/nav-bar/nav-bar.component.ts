@@ -20,6 +20,7 @@ export class NavBarComponent implements OnInit {
   headerEmail: string;
   fileSearch: string;
   user: User;
+  public isValid;
 
   @Output() messageEvent = new EventEmitter<string>();
 
@@ -30,6 +31,8 @@ export class NavBarComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.isValid=this.service.isValid;
+
   }
   getLoggedUser() {
     const isAuth = this.cookieService.check("user");

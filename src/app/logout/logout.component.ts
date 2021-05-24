@@ -22,7 +22,11 @@ export class LogoutComponent implements OnInit {
  this.service.getExamsDetiels().then((exam)=>{
    console.log(exam.course._id);
    this.service.logOut(exam.course._id);
- });
+ }).catch(err =>
+  {
+    console.log("logout");
+  });
+ 
   //
   //console.log(this.timer.courseAppId+"--------------");
     console.log("In logout component");
