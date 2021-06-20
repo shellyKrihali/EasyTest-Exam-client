@@ -16,7 +16,7 @@ export class FileService {
   public getFilesFullDetailes(fileId: string): Promise<any> {//,courseAppID: string
     let headers = new HttpHeaders();
     console.log(fileId);
-    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+    headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-exam")}`);
     const options = { headers: headers };
       return this.http.get<any>(`${environment.apiUrl}/summaries/${fileId}`,
       options

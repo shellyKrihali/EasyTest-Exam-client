@@ -123,7 +123,7 @@ export class TimerComponent implements OnInit {
   }
   
  openDialog(): void {
-  const timeout = 10000;
+  const timeout = 5000;
   const dialogRef = this.dialog.open(ExamIsOverDialogComponent, {
     width: '250px',
     data: {}

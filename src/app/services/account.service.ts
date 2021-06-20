@@ -34,14 +34,14 @@ export class AccountService {
         this.summariesSub.subscribe((value) => {
             this.summaries = value;
           });
-        if (cookieServise.check("user")) {
-            this.user = JSON.parse(cookieServise.get("user"));
+        if (cookieServise.check("user-exam")) {
+            this.user = JSON.parse(cookieServise.get("user-exam"));
         }
     }
 
     public getExamsDetiels(): Promise<any> {
         let headers = new HttpHeaders();
-        headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+        headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-exam")}`);
         const options = { headers: headers };
 
         return this.http.get<any>(`${environment.apiUrl}/users/exam`, options)
@@ -60,8 +60,8 @@ export class AccountService {
                 this.user = json["user"];
                 console.log(this.user);
                 this.name=this.user.name;
-                this.cookieServise.set("user", JSON.stringify(json.user));
-                this.cookieServise.set("token", json.token);
+                this.cookieServise.set("user-exam", JSON.stringify(json.user));
+                this.cookieServise.set("token-exam", json.token);
                 this.isValid=true;
                 
             }).catch((err: HttpErrorResponse) =>{
@@ -82,11 +82,11 @@ export class AccountService {
   
                 
         let headers = new HttpHeaders();
-        headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token")}`);
+        headers = headers.set('Authorization', `Bearer ${this.cookieServise.get("token-exam")}`);
         const options = { headers: headers };
 
-        this.cookieServise.delete("user");
-        this.cookieServise.delete("token");
+        this.cookieServise.delete("user-exam");
+        this.cookieServise.delete("token-exam");
         return this.http.post<any>(`${environment.apiUrl}/users/logout`, {courseAppId: courseAppId} , options).toPromise();
         
     

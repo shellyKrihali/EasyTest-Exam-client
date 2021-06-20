@@ -13,7 +13,7 @@ import { ConfirmationDialogComponent } from './confirm-dialog/confirm-dialog.com
 })
 export class NavBarComponent implements OnInit {
 
-  dialogRef:MatDialogRef<ConfirmationDialogComponent>
+  dialogRef: MatDialogRef<ConfirmationDialogComponent>
 
   collapsed = true;
   imagePath: string;
@@ -25,17 +25,17 @@ export class NavBarComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
 
 
-  constructor(private service: AccountService, private router: Router, private cookieService: CookieService, public dialog:MatDialog) {
+  constructor(private service: AccountService, private router: Router, private cookieService: CookieService, public dialog: MatDialog) {
 
-   }
-  
+  }
+
 
   ngOnInit(): void {
-    this.isValid=this.service.isValid;
+    this.isValid = this.service.isValid;
 
   }
   getLoggedUser() {
-    const isAuth = this.cookieService.check("user");
+    const isAuth = this.cookieService.check("user-exam");
     if (isAuth) {
       this.user = this.service.user;
       return true;
@@ -46,16 +46,16 @@ export class NavBarComponent implements OnInit {
   sendMessage() {
     this.messageEvent.emit("sec")
   }
-  openConfirmationDialog(){
-    this.dialogRef=this.dialog.open(ConfirmationDialogComponent, {
+  openConfirmationDialog() {
+    this.dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       disableClose: false
     });
-    this.dialogRef.componentInstance.confirmMessage="are you sure you want to leave your exam?"
-    this.dialogRef.afterClosed().subscribe(result =>{
-      if(result){
+    this.dialogRef.componentInstance.confirmMessage = "are you sure you want to leave your exam?"
+    this.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
         this.logOut();
       }
-      this.dialogRef=null;
+      this.dialogRef = null;
     });
 
   }

@@ -10,7 +10,7 @@ export class AuthGuard implements CanActivate {
 
 
     canActivate(route: ActivatedRouteSnapshot) {
-        const token = this.cookieServise.get("token");
+        const token = this.cookieServise.get("token-exam");
 
         if (token)
             return true;
