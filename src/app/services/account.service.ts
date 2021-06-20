@@ -53,7 +53,7 @@ export class AccountService {
     public login(email: string, password: string): Promise<any> {
         this.email=email;
         this.password=password;
-        return this.http.post<any>(`${environment.apiUrl}/users/login`, { email: email, password: password })
+        return this.http.post<any>(`${environment.apiUrl}/users/login-exam`, { email: email, password: password })
             .toPromise()
             .then(json => {
                 // console.log(json.user);
