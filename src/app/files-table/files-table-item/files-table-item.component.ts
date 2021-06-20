@@ -43,10 +43,10 @@ export class FilesTableItemComponent implements OnInit {
 
 
     });
-
+ 
     this.card = new Card(
-      ["read more"], "simaster A 2019", this.icons, this.url
-      , this.file.title,
+      ["read more"], "", this.icons, this.url
+      ,"",
       this.file.title
     );
    /* console.log(this.fileId);
