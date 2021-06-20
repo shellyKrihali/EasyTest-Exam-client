@@ -46,12 +46,26 @@ const password = this.loginForm.get('password').value;
     this.service.login(email, password)
     .then(() => {
       console.log(this.service.isValid);
-      if (this.service.isValid==true)
-      this.gotoHome();
+
+      
+      if (this.service.isValid==true){
+        this.service.getExamsDetiels().then((exam)=>{
+          console.log(exam);
+          this.gotoHome();
+
+        }).catch(err => {
+          if(this.service.isValid==true){ 
+            console.log("there is no exam nearby");
+            this.router.navigate(['/exam-not-found']);
+          }
+        })
+
+      }
       else
         this.serverErr = this.service.serverErr;
-      
-    });
+      })
+    
+   
     
     this.isValid=this.service.isValid;
   }

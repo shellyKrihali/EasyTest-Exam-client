@@ -45,9 +45,9 @@ export class AccountService {
         const options = { headers: headers };
 
         return this.http.get<any>(`${environment.apiUrl}/users/exam`, options)
-            .toPromise().catch((err)=>{
+            .toPromise()/*.catch((err)=>{
                 console.log("getExamsDetiels service");
-            })
+            })*/
     }
 
     public login(email: string, password: string): Promise<any> {

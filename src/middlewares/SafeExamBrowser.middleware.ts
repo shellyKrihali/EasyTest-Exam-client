@@ -15,9 +15,14 @@ export class SafeExamBrowser implements CanActivate {
 
         console.log(route.url[route.url.length - 1].path);
 
-        if (navigator.userAgent.indexOf('SEB') == -1) {
+        // if (navigator.userAgent.indexOf('SEB') == -1) {
+        //     alert('Please reconnect via Safe Exam Browser')
+
+        if(navigator.userAgent.indexOf('SEB')==-1 ){
             alert('Please reconnect via Safe Exam Browser')
-            // return false; ///this would not let other browsers enter the app
+           
+           
+             return false; ///this would not let other browsers enter the app
         }
 
         return true;

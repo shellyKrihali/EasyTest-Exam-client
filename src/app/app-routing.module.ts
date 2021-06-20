@@ -32,7 +32,7 @@ const appRoutes: Routes=[
     {path: 'waiting-room', component: WaitingRoomComponent, canActivate: [SafeExamBrowser] },
     {path: 'exam-not-found', component: ExamNotFoundDialogComponent},
     {path: 'exam-is-over-dialog', component:ExamIsOverDialogComponent},
-    {path:'home', component:HomeComponent, canActivate: [SafeExamBrowser] },
+    {path:'home', component:HomeComponent, canActivate: [AuthGuard, SafeExamBrowser] },
     { path: '**', redirectTo: '' }
 ];
 @NgModule({
